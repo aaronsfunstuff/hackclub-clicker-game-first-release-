@@ -193,3 +193,53 @@ function buyItem(itemKey, cost) {
     }
 }
 
+// Function to handle buying an upgrade
+function buyUpgrade(upgradeKey) {
+    const upgradeCosts = {
+        doubleTicketValue: 10,
+        autoClicker: 20,
+        tripleTicketValue: 30,
+        quadrupleTicketValue: 150,
+        megaAutoClicker: 200,
+        speedCoder: 100,
+        superSpeedCoder: 250,
+        codeOptimization: 300,
+        megaCodeOptimization: 500
+    };
+    
+    if (tickets >= upgradeCosts[upgradeKey]) {
+        tickets -= upgradeCosts[upgradeKey];
+        itemQuantities.upgrades[upgradeKey]++;
+        updateTicketCount();
+        updateUpgrades();
+    }
+}
+
+// Update UI every second
+setInterval(() => {
+    linesOfCode += ticketsPerSecond;
+    if (linesOfCode >= linesPerTicket) {
+        const ticketsEarned = Math.floor(linesOfCode / linesPerTicket);
+        tickets += ticketsEarned;
+        linesOfCode %= linesPerTicket;
+        updateTicketCount();
+    }
+    updateCodeLinesCount();
+    updateTicketsPerSecond();
+    updateAchievements();
+    updateItemQuantities();
+}, 1000);
+
+// Set click event for ticket clicking
+clickableImageElement.addEventListener('click', handleTicketClick);
+
+// Initial update of the UI
+updateTicketCount();
+updateCodeLinesCount();
+updateCodingSpeed();
+updateTicketsPerSecond();
+updateUpgrades();
+updateStore();
+updateItemQuantities();
+updateAchievements();
+
