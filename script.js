@@ -151,4 +151,45 @@ function updateUpgrades() {
             ${upgrade.name}
             <button onclick="buyUpgrade('${upgrade.key}')">Buy</button>
         `;
-       
+               upgradesContainer.appendChild(upgradeElement);
+    });
+}
+
+// Function to update the store display
+function updateStore() {
+    storeContainer.innerHTML = '';
+    const storeItems = [
+        { name: 'Pile of Stickers', cost: 1, key: 'pileOfStickers' },
+        { name: 'Domain', cost: 4, key: 'domain' },
+        { name: 'Soldering Iron', cost: 8, key: 'solderingIron' },
+        { name: 'Octocat Plush', cost: 15, key: 'octocatPlush' },
+        { name: 'Keychron K6 Pro', cost: 50, key: 'keychronK6Pro' },
+        { name: 'Flipper Zero', cost: 70, key: 'flipperZero' },
+        { name: 'iPad', cost: 160, key: 'iPad' },
+        { name: 'Quest 3', cost: 200, key: 'quest3' },
+        { name: 'RTX 3090', cost: 280, key: 'rtx3090' },
+        { name: 'MacBook', cost: 400, key: 'macBook' }
+    ];
+
+    storeItems.forEach(item => {
+        const storeItemElement = document.createElement('div');
+        storeItemElement.className = 'store-item';
+        storeItemElement.innerHTML = `
+            <div class="store-item-name">${item.name}</div>
+            <div class="store-item-cost">Cost: ${item.cost} Tickets</div>
+            <button onclick="buyItem('${item.key}', ${item.cost})">Buy</button>
+        `;
+        storeContainer.appendChild(storeItemElement);
+    });
+}
+
+// Function to handle buying an item from the store
+function buyItem(itemKey, cost) {
+    if (tickets >= cost) {
+        tickets -= cost;
+        itemQuantities.store[itemKey]++;
+        updateTicketCount();
+        updateItemQuantities();
+    }
+}
+
