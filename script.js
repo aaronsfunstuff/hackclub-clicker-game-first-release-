@@ -105,7 +105,7 @@ function updateAchievements() {
         if (achievement.condition) {
             achievementElement.classList.add('completed');
         }
- achievementElement.textContent = achievement.name;
+        achievementElement.textContent = achievement.name;
         achievementsContainer.appendChild(achievementElement);
     });
 }
@@ -151,7 +151,7 @@ function updateUpgrades() {
             ${upgrade.name}
             <button onclick="buyUpgrade('${upgrade.key}')">Buy</button>
         `;
-               upgradesContainer.appendChild(upgradeElement);
+        upgradesContainer.appendChild(upgradeElement);
     });
 }
 
@@ -242,4 +242,51 @@ updateUpgrades();
 updateStore();
 updateItemQuantities();
 updateAchievements();
+// DOM Elements for Prestige
+const prestigeContainer = document.getElementById('prestige-container');
+const prestigeButton = document.getElementById('prestige-button');
+const prestigeLevelElement = document.getElementById('prestige-level');
+const prestigeMultiplierElement = document.getElementById('prestige-multiplier');
+
+// Initialize Prestige
+let prestigeLevel = 0;
+const prestigeCost = 1000; // Example cost for prestige
+
+function updatePrestigeUI() {
+    prestigeLevelElement.textContent = `Prestige Level: ${prestigeLevel}`;
+    prestigeMultiplierElement.textContent = `Prestige Multiplier: x${prestigeLevel > 0 ? (prestigeLevel * 1.5).toFixed(1) : 1}`;
+}
+
+function handlePrestige() {
+    if (tickets >= prestigeCost) {
+        prestigeLevel++;
+        tickets -= prestigeCost; // Deduct the prestige cost
+        prestigeCost = Math.floor(prestigeCost * 1.5); // Increase cost for next prestige level
+        linesOfCode = 0; // Optionally reset lines of code
+        codingSpeed = 1; // Optionally reset coding speed
+        updateTicketCount();
+        updateCodeLinesCount();
+        updateCodingSpeed();
+        updateProgress();
+        updatePrestigeUI();
+        alert(`Prestiged! You are now at level ${prestigeLevel}.`);
+    } else {
+        alert('Not enough tickets to prestige.');
+    }
+}
+
+// Add Prestige Elements to the DOM
+prestigeContainer.innerHTML = `
+    <div id="prestige-info">
+        <p id="prestige-level">Prestige Level: ${prestigeLevel}</p>
+        <p id="prestige-multiplier">Prestige Multiplier: x1</p>
+        <button id="prestige-button">Prestige</button>
+    </div>
+`;
+
+// Event Listener for Prestige Button
+prestigeButton.addEventListener('click', handlePrestige);
+
+// Initial Prestige UI Update
+updatePrestigeUI();
 
