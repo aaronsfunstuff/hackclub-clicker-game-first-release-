@@ -105,3 +105,50 @@ function updateAchievements() {
         if (achievement.condition) {
             achievementElement.classList.add('completed');
         }
+ achievementElement.textContent = achievement.name;
+        achievementsContainer.appendChild(achievementElement);
+    });
+}
+
+// Function to update the item quantities display
+function updateItemQuantities() {
+    itemQuantitiesContainer.innerHTML = '';
+    Object.keys(itemQuantities.upgrades).forEach(upgrade => {
+        const quantityElement = document.createElement('div');
+        quantityElement.className = 'item-quantity-item';
+        quantityElement.textContent = `${upgrade}: ${itemQuantities.upgrades[upgrade]}`;
+        itemQuantitiesContainer.appendChild(quantityElement);
+    });
+    Object.keys(itemQuantities.store).forEach(item => {
+        const quantityElement = document.createElement('div');
+        quantityElement.className = 'item-quantity-item';
+        quantityElement.textContent = `${item}: ${itemQuantities.store[item]}`;
+        itemQuantitiesContainer.appendChild(quantityElement);
+    });
+}
+
+// Function to update the upgrades display
+function updateUpgrades() {
+    upgradesContainer.innerHTML = '';
+    const upgrades = [
+        { name: 'Double Ticket Value', icon: 'https://images.emojiterra.com/google/android-oreo/512px/1f39f.png', description: 'Doubles the value of each ticket.', key: 'doubleTicketValue' },
+        { name: 'Auto Clicker', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXxTTKQEmqM2zhzO5UORaCooWXgLy11gQwWw&s', description: 'Automatically clicks the ticket every second.', key: 'autoClicker' },
+        { name: 'Triple Ticket Value', icon: 'https://static-00.iconduck.com/assets.00/admission-tickets-emoji-2048x2048-nc3fqb62.png', description: 'Triples the value of each ticket.', key: 'tripleTicketValue' },
+        { name: 'Quadruple Ticket Value', icon: 'https://static-00.iconduck.com/assets.00/admission-tickets-emoji-2048x2048-nc3fqb62.png', description: 'Quadruples the value of each ticket.', key: 'quadrupleTicketValue' },
+        { name: 'Mega Auto Clicker', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXxTTKQEmqM2zhzO5UORaCooWXgLy11gQwWw&s', description: 'Auto clicks the ticket every 0.5 seconds.', key: 'megaAutoClicker' },
+        { name: 'Speed Coder', icon: 'https://images.emojiterra.com/google/android-oreo/512px/1f39f.png', description: 'Increases coding speed by 2 lines per click.', key: 'speedCoder' },
+        { name: 'Super Speed Coder', icon: 'https://images.emojiterra.com/google/android-oreo/512px/1f39f.png', description: 'Increases coding speed by 5 lines per click.', key: 'superSpeedCoder' },
+        { name: 'Code Optimization', icon: 'https://images.emojiterra.com/google/android-oreo/512px/1f39f.png', description: 'Reduces lines needed per ticket by 10.', key: 'codeOptimization' },
+        { name: 'Mega Code Optimization', icon: 'https://images.emojiterra.com/google/android-oreo/512px/1f39f.png', description: 'Reduces lines needed per ticket by 30.', key: 'megaCodeOptimization' }
+    ];
+    
+    upgrades.forEach(upgrade => {
+        const upgradeElement = document.createElement('div');
+        upgradeElement.className = 'upgrade-item';
+        upgradeElement.innerHTML = `
+            <img src="${upgrade.icon}" alt="${upgrade.name}">
+            <div class="upgrade-tooltip">${upgrade.description}</div>
+            ${upgrade.name}
+            <button onclick="buyUpgrade('${upgrade.key}')">Buy</button>
+        `;
+       
