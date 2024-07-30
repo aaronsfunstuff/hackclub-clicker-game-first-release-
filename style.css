@@ -97,6 +97,7 @@ p {
     text-align: center;
     margin: 10px 0;
 }
+
 .clickable-image {
     width: 200px;
     cursor: pointer;
@@ -226,4 +227,64 @@ p {
 .scroll-container::-webkit-scrollbar-track {
     background: #2c3e50;
     border-radius: 10px;
+}
+/* Prestige Container Styling */
+#prestige-container {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Prestige Container Styling */
+#prestige-container {
+    background-color: #34495e; /* Matches the theme background color */
+    border: 1px solid #2c3e50; /* Matches the panel borders */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Prestige Info Styling */
+#prestige-info {
+    font-family: 'Phantom Sans', sans-serif;
+    color: #ec3750; /* Match the heading color */
+}
+
+#prestige-info p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #fff;
+}
+
+#prestige-info p#prestige-multiplier {
+    font-weight: bold;
+    color: #33d6a6;
+}
+
+#prestige-button {
+    background-color: #ec3750; 
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#prestige-button:hover {
+    background-color: #f1c40f; 
+}
+
+#prestige-button:disabled {
+    background-color: #34495e; 
+    cursor: not-allowed;
 }
