@@ -1,0 +1,100 @@
+body {
+    font-family: 'Phantom Sans', sans-serif;
+    color: #333;
+    background-color: #eaf3e1; /* Pastel green background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #9fd3c1; /* Soft pastel green */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid #8fc7b2;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    padding-bottom: 100px; 
+}
+
+#intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#intro h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+#intro p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+#interactive-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#magic-box {
+    background-color: #c8e0d6; /* Light pastel green */
+    color: #333;
+    padding: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 10px;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#magic-box:hover {
+    background-color: #b2d3c1; /* Slightly darker pastel green */
+    transform: scale(1.05);
+}
+
+#projects {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.projects-button {
+    display: inline-block;
+    background-color: #9fd3c1; /* Soft pastel green */
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 1.5em;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.projects-button:hover {
+    background-color: #8fc7b2; /* Slightly darker pastel green */
+    transform: scale(1.05);
+}
+
+#about-me {
+    text-align: center;
+    margin-top: 40px;
+}
