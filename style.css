@@ -203,3 +203,27 @@ p {
     font-size: 1em;
     transition: background 0.3s;
 }
+
+.store-item button:hover {
+    background: #f1c40f;
+}
+
+.store-item span {
+    font-size: 1.1em;
+    color: #fff;
+}
+
+/* Scrollbar */
+.scroll-container::-webkit-scrollbar {
+    height: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #8492a6;
+    border-radius: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: #2c3e50;
+    border-radius: 10px;
+}
