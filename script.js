@@ -51,3 +51,57 @@ function updateTicketCount() {
 function updateCodeLinesCount() {
     codeLinesCountElement.textContent = `👨‍💻 Lines of Code: ${linesOfCode}`;
 }
+
+// Function to update the coding speed display
+function updateCodingSpeed() {
+    clickRateElement.textContent = `👨‍💻 Coding Speed: ${codingSpeed} Lines/Click`;
+}
+
+// Function to update the tickets per second display
+function updateTicketsPerSecond() {
+    ticketsPerSecondElement.textContent = `🎟️ Tickets/Sec: ${ticketsPerSecond}`;
+}
+
+// Function to handle ticket click
+function handleTicketClick() {
+    linesOfCode += codingSpeed;
+    if (linesOfCode >= linesPerTicket) {
+        // Calculate tickets based on lines of code
+        const ticketsEarned = Math.floor(linesOfCode / linesPerTicket);
+        tickets += ticketsEarned;
+        linesOfCode %= linesPerTicket; // Reset linesOfCode to the remaining after tickets
+        updateTicketCount();
+    }
+    updateCodeLinesCount();
+}
+
+// Function to get the multiplier for ticket value based on upgrades
+function getUpgradeMultiplier(...upgradeKeys) {
+    let multiplier = 1;
+    upgradeKeys.forEach(key => {
+        if (itemQuantities.upgrades[key] > 0) {
+            if (key === 'doubleTicketValue') multiplier *= 2;
+            if (key === 'tripleTicketValue') multiplier *= 3;
+            if (key === 'quadrupleTicketValue') multiplier *= 4;
+        }
+    });
+    return multiplier;
+}
+
+// Function to update the achievements display
+function updateAchievements() {
+    achievementsContainer.innerHTML = '';
+    // Example achievements
+    const achievements = [
+        { name: 'First Click', condition: tickets >= 1 },
+        { name: 'Early Adopter', condition: tickets >= 10 },
+        { name: 'Code Master', condition: linesOfCode >= 100 },
+        { name: 'Upgrade Enthusiast', condition: Object.values(itemQuantities.upgrades).some(q => q > 0) }
+    ];
+    
+    achievements.forEach(achievement => {
+        const achievementElement = document.createElement('div');
+        achievementElement.className = 'achievement-item';
+        if (achievement.condition) {
+            achievementElement.classList.add('completed');
+        }
